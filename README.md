@@ -32,3 +32,5 @@ The script will never overwrite existing initials/authors in your ~/.git-authors
 - Write tests
 - Python 2.7 compatibility
 - Repo-aware initials
+- Fuzzy match initials and combine initials and e-mails
+- Generate .mailmap

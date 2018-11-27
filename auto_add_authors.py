@@ -74,9 +74,8 @@ if __name__ == '__main__':
 
     print("\nAdding them to .git-authors")
     git_author_path = os.path.expanduser("~/.git-authors")
-    git_authors = yaml.safe_load(open(git_author_path, "r"))
-    print(git_authors)
-    if git_authors is None:
+    if not os.path.exists(git_author_path):
+        git_authors = yaml.safe_load(open(git_author_path, "w+"))
         authors = {}
         email_addresses = {}
         for initials, email, name in distinct_users:
@@ -87,6 +86,7 @@ if __name__ == '__main__':
             authors=authors, email_addresses=email_addresses)
 
     else:
+        git_authors = yaml.safe_load(open(git_author_path, "r"))
         for initials, email, name in distinct_users:
             if initials in git_authors['authors']:
                 continue
